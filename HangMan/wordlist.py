@@ -1,18 +1,7 @@
 import random
 
 
-def hidden_word(word_list):
-    word_to_guess = random.choice(word_list)
-    return word_to_guess
-    
-
-def clue_display(word):
-    clue = ['_' for _ in range(len(word))]
-    return clue
-
-
-def word_list_categories():
-    word_verse = {
+WORD_LIST_CATEGORIES = {
     'animals' : (
     "aardvark", "albatross", "alligator", "alpaca", "ant", "antelope", "ape", "armadillo", "baboon", "badger", 
     "barracuda", "bat", "bear", "beaver", "bee", "beetle", "bird", "bison", "boar", "butterfly", "camel", 
@@ -74,7 +63,16 @@ def word_list_categories():
     "Maxwell", "Natalie", "Owen", "Piper", "Quentin", "Rose", "Samuel", "Talia", "Uriah", "Victoria",
     "Walter", "Xenia", "Yvette", "Zachary"
 )
-    }
+}
+
+
+def hidden_word(word_list):
+    word_to_guess = random.choice(word_list)
+    return word_to_guess
     
-    return word_verse
+
+def clue_display(word):
+    clue = ['_' for _ in range(len(word))]
+    return clue
+
 
