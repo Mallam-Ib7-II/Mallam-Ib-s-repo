@@ -1,7 +1,7 @@
 from hangman_art import body_arts
 from rich.traceback import install
 from rich.console import Console
-from wordlist import word_list_categories, hidden_word, clue_display
+from wordlist import WORD_LIST_CATEGORIES, hidden_word, clue_display
 import random
 
 
@@ -38,14 +38,13 @@ def word_list_category_choice():
         category = int(input('Select a category (1 - 4): '))
     except Exception:
         console.print('\nInvalid Input! Please, enter digit (1 - 4)\n', style='bold red')
-        return word_list_category_choice()
+        word_list_category_choice()
     else:
         if 0 < category < 5:
             return category
         else:
             console.print('\nNumber too large! Please, enter digit (1 - 4)\n', style='bold red')
-            return word_list_category_choice()
-        
+            word_list_category_choice()
         
 def word_list_category():
     options_dict = {
@@ -57,7 +56,7 @@ def word_list_category():
     
     try:
         category = word_list_category_choice()
-        word_list_choice:str = word_list_categories()[options_dict[category]]
+        word_list_choice : str = WORD_LIST_CATEGORIES[options_dict[category]]
         return word_list_choice
     except Exception:
         word_list_category()
