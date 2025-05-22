@@ -33,19 +33,6 @@ def play_again():
         play_again()
         
         
-def word_list_category_choice():
-    try:
-        category = int(input('Select a category (1 - 4): '))
-    except Exception:
-        console.print('\nInvalid Input! Please, enter digit (1 - 4)\n', style='bold red')
-        word_list_category_choice()
-    else:
-        if 0 < category < 5:
-            return category
-        else:
-            console.print('\nNumber too large! Please, enter digit (1 - 4)\n', style='bold red')
-            word_list_category_choice()
-        
 def word_list_category():
     options_dict = {
         1: 'names',
@@ -53,16 +40,20 @@ def word_list_category():
         3: 'places',
         4: 'things',
     }
-    
-    try:
-        category = word_list_category_choice()
-        word_list_choice : str = WORD_LIST_CATEGORIES[options_dict[category]]
-        return word_list_choice
-    except Exception:
-        word_list_category()
         
-    
-    
+    try:
+        category = int(input('Select a category (1 - 4): '))
+    except (TypeError, RecursionError):
+        console.print('\nInvalid Input! Please, enter digit (1 - 4)\n', style='bold red')
+        word_list_category()
+    else:
+        if 0 < category < 5:
+            word_list_choice : str = WORD_LIST_CATEGORIES[options_dict[category]]
+        else:
+            console.print('\nNumber too large! Please, enter digit (1 - 4)\n', style='bold red')
+            word_list_category()
+    return word_list_choice
+                
 
 def main():
     console.print('\n------------------------------HangMan--------------------------------')
